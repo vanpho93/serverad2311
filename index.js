@@ -3,7 +3,7 @@ var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 server.listen(3000, () => console.log('Server started'));
-var query = require('./db.js');
+var {query, addClick} = require('./db.js');
 
 app.set('view engine', 'ejs');
 app.set('views', './views');

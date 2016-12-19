@@ -34,4 +34,14 @@ function query(sql, cb){
   });
 }
 
-module.exports = query;
+function addClick(hinh, cb){
+  var sql = `WITH a AS
+            (UPDATE "Ad" SET click = click + 1
+            WHERE hinh = '${hinh}' RETURNING *)
+            SELECT * FROM a`;
+  query(sql, cb);
+}
+
+addClick('2.jpg', (e, r) => console.log(r.rows[0]));
+
+module.exports = {query, addClick};
