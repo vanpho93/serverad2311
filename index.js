@@ -13,4 +13,8 @@ app.get('/admin', (req, res) => res.render('admin', {mangQuangCao}));
 
 io.on('connection', socket => {
   console.log('Co nguoi ket noi');
+  socket.on('ADMIN_CHANGE_AD', src => {
+    var ad = mangQuangCao.find(e => e.hinh == src);
+    console.log(ad);
+  })
 });

@@ -12,6 +12,11 @@
           var src = $('#sl-quang-cao').val();
           $('#img-quang-cao').attr('src', `images/${src}`);
         });
+
+        $('#btn-send').click(() => {
+          var src = $('#sl-quang-cao').val();
+          socket.emit('ADMIN_CHANGE_AD', src);
+        });
       });
     </script>
     <style media="screen">
