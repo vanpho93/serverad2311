@@ -12,9 +12,11 @@
         $(document).ready(() => {
             var socket = io();
             socket.on('SERVER_CHANGE_AD', ad => {
-              $('#img-quang-cao').attr('src', `images/${ad.hinh}`);
-              hinh = ad.hinh;
-              qc = 'http://'+ad.link;
+              if(ad != null){
+                $('#img-quang-cao').attr('src', `images/${ad.hinh}`);
+                hinh = ad.hinh;
+                qc = 'http://'+ad.link;
+              }
             });
             $('#img-quang-cao').click(() => {
               socket.emit('CLIENT_CLICK_AD', hinh)

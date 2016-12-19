@@ -22,6 +22,11 @@
           console.log(ad);
           $(`#li${ad.id}`).html(`${ad.ten}: ${ad.click}`);
         });
+
+        socket.on('FIRST_FOR_ADMIN', ad => {
+          $('#sl-quang-cao').val(ad.hinh);
+          $('#img-quang-cao').attr('src', 'images/'+ad.hinh);
+        });
       });
     </script>
     <style media="screen">
