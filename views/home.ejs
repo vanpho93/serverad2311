@@ -17,9 +17,8 @@
               qc = 'http://'+ad.link;
             });
             $('#img-quang-cao').click(() => {
-              alert('click')
-              socket.emit('CLIENT_CLICK_AD', $('#img-quang-cao').attr('src'))
-              window.open(qc, '_blank')
+              socket.emit('CLIENT_CLICK_AD', hinh)
+              window.open(qc, '_blank');
             });
         });
 

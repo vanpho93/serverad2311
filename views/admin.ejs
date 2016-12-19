@@ -17,6 +17,10 @@
           var src = $('#sl-quang-cao').val();
           socket.emit('ADMIN_CHANGE_AD', src);
         });
+
+        socket.on('CLICK_TO_ADMIN', ad => {
+          $(`#${ad.hinh}`).val(`${ad.ten}: ${ad.click}`);
+        });
       });
     </script>
     <style media="screen">
@@ -35,5 +39,10 @@
     <button id="btn-send">Gui</button>
     <hr>
     <img id="img-quang-cao"/>
+    <ul id="list-item">
+      <%mangQuangCao.forEach(e => {%>
+        <li id="<%=e.hinh%>"><%= e.ten%>: <%=e.click%></li>
+      <%})%>
+    </ul>
   </body>
 </html>

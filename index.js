@@ -35,6 +35,8 @@ io.on('connection', socket => {
   });
 
   socket.on('CLIENT_CLICK_AD', src => {
-    console.log('Nguoi dung click quang cao: ' + src);
+    addClick(src, (err, result) => {
+      io.emit('CLICK_TO_ADMIN', result.rows[0]);
+    })
   })
 });

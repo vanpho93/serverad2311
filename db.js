@@ -42,6 +42,4 @@ function addClick(hinh, cb){
   query(sql, cb);
 }
 
-addClick('2.jpg', (e, r) => console.log(r.rows[0]));
-
 module.exports = {query, addClick};
