@@ -11,10 +11,13 @@ app.use(express.static('public'));
 app.get('/', (req, res) => res.render('home'));
 app.get('/admin', (req, res) => res.render('admin', {mangQuangCao}));
 
+var currentAd = mangQuangCao[0];
 io.on('connection', socket => {
   console.log('Co nguoi ket noi');
+  socket.emit('SERVER_CHANGE_AD', currentAd);
   socket.on('ADMIN_CHANGE_AD', src => {
     var ad = mangQuangCao.find(e => e.hinh == src);
-    console.log(ad);
-  })
+    currentAd = ad;
+    socket.broadcast.emit('SERVER_CHANGE_AD', ad);
+  });
 });
