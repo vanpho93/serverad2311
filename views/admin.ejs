@@ -8,10 +8,27 @@
     <script type="text/javascript">
       $(document).ready(() => {
         var socket = io();
+        $('#sl-quang-cao').change(() => {
+          var src = $('#sl-quang-cao').val();
+          $('#img-quang-cao').attr('src', `images/${src}`);
+        });
       });
     </script>
+    <style media="screen">
+      hr{
+        visibility: hidden;
+      }
+    </style>
   </head>
   <body>
-
+    <select id="sl-quang-cao">
+      <option>--Choose your ad--</option>
+      <%mangQuangCao.forEach(e => {%>
+        <option value="<%=e.hinh%>"><%=e.ten%></option>
+      <%})%>
+    </select>
+    <button id="btn-send">Gui</button>
+    <hr>
+    <img id="img-quang-cao"/>
   </body>
 </html>
