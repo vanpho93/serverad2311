@@ -23,6 +23,7 @@ io.on('connection', socket => {
   query(`SELECT * FROM "Ad" WHERE hinh='${currentImage}'`, (err, result) =>{
     socket.emit('SERVER_CHANGE_AD', result.rows[0]);
   })
+
   socket.on('ADMIN_CHANGE_AD', src => {
     currentImage = src;
     // var ad = mangQuangCao.find(e => e.hinh == src);
@@ -32,4 +33,8 @@ io.on('connection', socket => {
       socket.broadcast.emit('SERVER_CHANGE_AD', result.rows[0]);
     })
   });
+
+  socket.on('CLIENT_CLICK_AD', src => {
+    console.log('Nguoi dung click quang cao: ' + src);
+  })
 });

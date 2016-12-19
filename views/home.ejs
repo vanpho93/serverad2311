@@ -7,18 +7,27 @@
     <script src="jquery-3.1.1.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script type="text/javascript">
+        var qc;
+        var hinh;
         $(document).ready(() => {
             var socket = io();
             socket.on('SERVER_CHANGE_AD', ad => {
               $('#img-quang-cao').attr('src', `images/${ad.hinh}`);
-              $('#a-quang-cao').attr('href', `http://${ad.link}`);
+              hinh = ad.hinh;
+              qc = 'http://'+ad.link;
+            });
+            $('#img-quang-cao').click(() => {
+              alert('click')
+              socket.emit('CLIENT_CLICK_AD', $('#img-quang-cao').attr('src'))
+              window.open(qc, '_blank')
             });
         });
+
     </script>
 </head>
 
 <body>
-    <a id="a-quang-cao"><img src="" id="img-quang-cao"/></a>
+    <a id="a-quang-cao" href="#"><img src="" id="img-quang-cao"/></a>
     <div id="left_calculator">
         <div class="block_timer_share">
             <div class="block_timer left txt_666">
