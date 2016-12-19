@@ -27,6 +27,16 @@
           $('#sl-quang-cao').val(ad.hinh);
           $('#img-quang-cao').attr('src', 'images/'+ad.hinh);
         });
+
+        // setInterval(() => {
+        //   var src = $('#sl-quang-cao').val();
+        //   socket.emit('ADMIN_CHANGE_AD', src);
+        // }, 10000);
+        $('#get-option').click(() => {
+          var mang = $('option');
+          var arrValue = mang.map(e => $(e).attr('value'));
+          console.log(arrValue.prevObject[1].value);
+        })
       });
     </script>
     <style media="screen">
@@ -50,5 +60,6 @@
         <li id="li<%=e.id%>"><%= e.ten%>: <%=e.click%></li>
       <%})%>
     </ul>
+    <button id="get-option">Get all Option</button>
   </body>
 </html>
