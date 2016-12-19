@@ -19,7 +19,8 @@
         });
 
         socket.on('CLICK_TO_ADMIN', ad => {
-          $(`#${ad.hinh}`).val(`${ad.ten}: ${ad.click}`);
+          console.log(ad);
+          $(`#li${ad.id}`).html(`${ad.ten}: ${ad.click}`);
         });
       });
     </script>
@@ -41,7 +42,7 @@
     <img id="img-quang-cao"/>
     <ul id="list-item">
       <%mangQuangCao.forEach(e => {%>
-        <li id="<%=e.hinh%>"><%= e.ten%>: <%=e.click%></li>
+        <li id="li<%=e.id%>"><%= e.ten%>: <%=e.click%></li>
       <%})%>
     </ul>
   </body>
